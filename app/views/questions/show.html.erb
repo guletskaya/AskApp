@@ -4,7 +4,8 @@
             <div class="col-8 mt-4">
                 <div class="card shadow p-1 mb-5 bg-white rounded">
                 <div class="card-header text-center font-italic">
-                    by <%= @question.user.username %>
+                    by <%= @question.user.username if @question.user %>
+                    <%= link_to gravatar_for(@question.user), user_path(@question.user) %>
                 </div>
                 <div class="card-body">
                     <div class="card-text"><%= simple_format(@question.body) %></div>

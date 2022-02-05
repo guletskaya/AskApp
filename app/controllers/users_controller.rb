@@ -9,11 +9,15 @@ class UsersController < ApplicationController
         @questions = @user.questions
     end
 
+    def index
+        @users = User.all
+    end
+
     def create
         @user = User.new(user_params)
         if @user.save
             flash[:notice] = "Welcome to the AskAll #{@user.username}, you have successfully signed up!"
-            redirect_to root_path
+            redirect_to @user
         else
             render 'new'
         end
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.update(user_params)
             flash[:notice] = "#{@user.username}, you have successfully updated your profile!"
-            redirect_to root_path
+            redirect_to @user
         else
             render 'edit'
         end
