@@ -18,7 +18,7 @@
                     <%= f.password_field :password, class: "form-control mb-2 mx-auto shadow rounded", placeholder: "Choose a password" %>
                </div>
                <div class="col-auto">
-                 <%=f.submit "Sign Up", class: "btn btn-outline-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center" %>
+                 <%=f.submit(@user.new_record? ? "Sign Up" : "Update profile", class: "btn btn-outline-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center") %>
                </div>
             <% end %> 
             <%= link_to '[Cancel and return to homepage]', root_path, class: "mx-auto justify-content-center d-grid gap-2 d-md-flex mt-4 text-info" %>
