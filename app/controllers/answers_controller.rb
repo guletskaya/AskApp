@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
 
     def create
         @answer = @question.answers.build answer_params
-
+        @answer.user = current_user
         if @answer.save
             flash[:notice] = "Answer was successfully created."
             redirect_to question_path(@question)
@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
     end
 
     def destroy        
-        answer.destroy
+        @answer.destroy
         flash[:notice] = "Answer was successfully deleted."
         redirect_to question_path(@question)
 

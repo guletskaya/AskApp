@@ -1,14 +1,16 @@
 class QuestionsController < ApplicationController
-
+    before_action :authenticate_user!
     before_action :set_question!, only: [:show, :edit, :update, :destroy]
 
     def show
        @answer = @question.answers.build
        @answers = @question.answers.order created_at: :desc
+    
     end
 
     def index
         @questions = Question.all
+        
     end
 
     def new
@@ -17,7 +19,7 @@ class QuestionsController < ApplicationController
 
     def create
        @question = Question.new(question_params)
-       @question.user = User.first
+       @question.user = current_user
        if @question.save
             flash[:notice] = "Question was created successfully."
             redirect_to @question

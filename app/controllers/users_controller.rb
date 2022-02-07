@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def show
         
-        @questions = @user.questions
+      @questions = @user.questions
     end
 
     def index
@@ -16,14 +16,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
-        if @user.save
-            session[:user_id] = @user.id
-            flash[:notice] = "Welcome to the AskAll #{@user.username}, you have successfully signed up!"
-            redirect_to @user
-        else
-            render 'new'
-        end
+        
     end
 
     def edit
