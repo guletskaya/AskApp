@@ -14,7 +14,7 @@
                     <%= f.text_area :body, rows: 10, class: "form-control mb-2 mx-auto shadow rounded", placeholder: "Description of your question" %>
                </div>
                <div class="col-auto">
-                 <%=f.submit class: "btn btn-outline-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center" %>
+                 <%=f.submit class: "btn btn-outline-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center" if @question.user==current_user %>
                </div>
             <% end %> 
             <%= link_to '[Cancel and return to questions listing]', questions_path, class: "mx-auto justify-content-center d-grid gap-2 d-md-flex mt-4 text-info" %>
