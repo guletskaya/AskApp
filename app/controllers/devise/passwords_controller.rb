@@ -31,6 +31,13 @@ class Devise::PasswordsController < DeviseController
 
   # PUT /resource/password
   def update
+    if current_account.update_with_password(params[:account])
+      sign_in(current_account, :bypass => true)
+      flash[:notice] = 'Password updated.'
+      redirect_to account_path
+    else
+      render :action => :show
+    end
     self.resource = resource_class.reset_password_by_token(resource_params)
     yield resource if block_given?
 

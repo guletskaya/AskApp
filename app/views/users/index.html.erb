@@ -9,7 +9,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    <%= link_to gravatar_for(user, size: 150), user %>
+                <%= image_tag user.avatar, width:"130px" if user.avatar.attached?%>
                 </h5>
                 <p class="card-text"><%= pluralize(user.questions.count, "question") %></p>
                 <%= link_to "View profile", user, class: "btn btn-outline-success" %>

@@ -5,6 +5,9 @@
     <div class="row justify-content-md-center bg-success shadow rounded">
         <div class="p-3 border bg-light col-8 mt-4 mb-4 shadow rounded">
           <%= form_with(model: @user, data: { turbo: false }, local: true) do |f| %>
+            <div class="field">
+            <%= f.file_field :avatar %>
+            </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Username</label>
                     <%= f.text_field :username, class:"form-control mb-20 mt-20 mx-auto shadow", placeholder: "Enter a username" %>
@@ -27,6 +30,7 @@
                <div class="col-auto">
                  <%=f.submit(@user.new_record? ? "Sign Up" : "Update profile", class: "btn btn-outline-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center") %>
                </div>
+               
             <% end %> 
             <%= link_to '[Cancel and return to homepage]', root_path, class: "mx-auto justify-content-center d-grid gap-2 d-md-flex mt-4 text-info" %>
         </div>
